@@ -1,0 +1,37 @@
+    <!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FoodFlow - Đặt món ngon mỗi ngày</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+</head><body>
+<div class="announcement">✦ Ưu đãi hôm nay: miễn phí giao hàng cho đơn từ 99.000đ ✦</div>
+<header class="site-header"><a class="brand" href="#home">🍜 Food<span>Flow</span></a>
+<button id="mobileMenu" class="mobile-menu">☰</button>
+<nav id="navLinks"><a href="#home">Trang chủ</a><a href="#menu">Thực đơn</a><a href="#menu" data-category-link="vegetarian">Món chay 🌿</a><a href="#why-us">Về chúng tôi</a></nav>
+<div class="header-actions"><input id="headerSearch" class="search" type="search" placeholder="Tìm món ăn...">
+<button id="cartButton" class="icon-button">🛒 <b id="cartCount">0</b></button><button id="openAuth" class="login-button">♙ <span id="headerUser">Đăng nhập</span></button></div></header>
+<main>
+<section class="hero" id="home"><div><p class="eyebrow">MÓN NGON · GIAO TẬN NƠI</p><h1>Hôm nay ăn gì?<br><span>Để FoodFlow lo!</span></h1>
+<p>Khám phá 50 lựa chọn món ăn và đồ uống. Chọn món yêu thích và đặt hàng thật dễ dàng.</p>
+<form id="heroSearchForm" class="hero-search"><input id="heroSearch" type="search" placeholder="Bạn đang thèm món gì?"><button class="primary">Tìm món →</button></form>
+<p class="perks">✓ Đặt món dễ dàng　 ✓ Có món chay　 ✓ Giá cả rõ ràng</p></div>
+<img class="hero-photo" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80" alt="Món ăn tươi ngon"></section>
+<section class="wrap category-section"><p class="eyebrow">KHÁM PHÁ HƯƠNG VỊ</p><h2>Chọn theo sở thích</h2><div class="category-list" id="categoryList">
+<button class="category-chip selected" data-category="all">🍽️<strong>Tất cả</strong></button><button class="category-chip" data-category="rice">🍚<strong>Cơm</strong></button>
+<button class="category-chip" data-category="noodle">🍜<strong>Bún & mì</strong></button><button class="category-chip" data-category="snack">🍕<strong>Ăn vặt</strong></button>
+<button class="category-chip" data-category="vegetarian">🌿<strong>Món chay</strong></button><button class="category-chip" data-category="drink">🧋<strong>Đồ uống</strong></button><button class="category-chip" data-category="savory">🍗<strong>Món mặn</strong></button></div></section>
+<section class="wrap menu-section" id="menu"><div class="menu-heading"><div><p class="eyebrow">NGON KHÓ CƯỠNG</p><h2 id="menuTitle">Món ngon được yêu thích ✦</h2><p id="menuSubtitle">Chọn món ngon cho bữa ăn hôm nay</p></div>
+<label>Sắp xếp <select id="sortSelect"><option value="popular">Phổ biến</option><option value="low">Giá thấp đến cao</option><option value="high">Giá cao đến thấp</option></select></label></div>
+<div id="filterNote" class="filter-note hidden"></div><div class="food-grid" id="foodGrid"></div>
+<div id="emptyState" class="empty-state hidden"><h3>Chưa tìm thấy món phù hợp</h3><button id="resetFilters" class="primary">Xem tất cả món</button></div></section>
+<section class="wrap veg-banner"><div><p class="eyebrow">SỐNG XANH, ĂN LÀNH</p><h2>Món chay thanh lành,<br>vị ngon trọn vẹn.</h2><p>Khám phá các lựa chọn từ rau củ, nấm và đạm thực vật.</p><button id="exploreVeg" class="primary">Khám phá món chay →</button></div><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80" alt="Salad rau củ"></section>
+<section class="wrap why-section" id="why-us"><p class="eyebrow">VÌ SAO CHỌN FOODFLOW?</p><h2>Mỗi bữa ăn, thêm niềm vui</h2><div class="benefits"><article><h3>⚡ Đặt món nhanh</h3><p>Tìm và chọn món chỉ trong vài thao tác.</p></article><article><h3>🌿 Nhiều món chay</h3><p>Danh mục món chay riêng biệt, dễ tìm.</p></article><article><h3>♡ Món yêu thích</h3><p>Lưu món bạn thích sau khi đăng nhập.</p></article></div></section>
+</main><footer>🍜 FoodFlow · Ngon miệng mỗi ngày, vui vẻ mỗi bữa ăn.</footer>
+<div id="toast" class="toast"></div>
+<div id="authModal" class="overlay hidden"><div class="modal"><button id="closeAuth" class="close">×</button><h2 id="authTitle">Đăng nhập để đặt món</h2><div class="tabs"><button class="auth-tab active" data-auth-tab="login">Đăng nhập</button><button class="auth-tab" data-auth-tab="register">Tạo tài khoản</button></div>
+<form id="loginForm" class="auth-form"><label>Email<input name="email" type="email" required></label><label>Mật khẩu<input name="password" type="password" minlength="6" required></label><label class="remember"><input type="checkbox" name="remember"> Ghi nhớ đăng nhập</label><button class="primary" type="submit">Đăng nhập</button><p>Chưa có tài khoản? <button type="button" class="text-button" data-switch-auth="register">Đăng ký</button></p></form>
+<form id="registerForm" class="auth-form hidden"><label>Họ và tên<input name="name" required minlength="2"></label><label>Email<input name="email" type="email" required></label><label>Mật khẩu<input name="password" type="password" minlength="6" required></label><label>Nhập lại mật khẩu<input name="confirmPassword" type="password" minlength="6" required></label><label class="remember"><input type="checkbox" name="terms" required> Tôi đồng ý với điều khoản.</label><button class="primary" type="submit">Tạo tài khoản</button><p>Đã có tài khoản? <button type="button" class="text-button" data-switch-auth="login">Đăng nhập</button></p></form><small>Bản demo học tập lưu tài khoản trong trình duyệt.</small></div></div>
+<div id="cartModal" class="overlay hidden"><div class="modal cart-modal"><button id="closeCart" class="close">×</button><h2>Giỏ hàng <span id="cartTitleCount">(0 món)</span></h2><div id="cartItems"></div><div class="summary"><p>Tạm tính <strong id="cartSubtotal">0đ</strong></p><p>Phí giao hàng <strong id="deliveryFee">0đ</strong></p><p>Tổng cộng <strong id="cartTotal">0đ</strong></p><button id="checkoutButton" class="primary">Tiến hành đặt món</button></div></div></div>
+</body></html>
